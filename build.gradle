@@ -1,0 +1,29 @@
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'stjs'
+
+
+buildscript {
+  repositories {
+    mavenCentral()
+  }
+
+  dependencies {
+    classpath group: 'com.github.dzwicker.stjs.gradle', name: 'st-js-gradle-plugin', version: '3.0.1'
+  }
+}
+
+
+
+stjs {
+//    include 'com/**/*StJs.java'
+      include 'com/tiemens/clock/model/*.java'
+}
+
+war {
+    baseName 'liquid-equity-time'
+
+    from("$buildDir/stjs") {
+        into 'WEB-INF/classes'
+    }
+}

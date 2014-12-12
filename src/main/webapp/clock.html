@@ -4,7 +4,7 @@
   <script src="js/modules/svgclock.js"></script>
   <script src="js/modules/svgclockapplication.js"></script>
 </head>
-<body >
+<body>
  <div ng-controller="SvgClockController">
 
 
@@ -17,14 +17,16 @@
       <line x1="100" y1="100" x2="100" y2="20"
             style="stroke-width: 3px; stroke: #888;"
             ng-attr-transform="rotate({{minuteRotation}} 100 100)" />
-      <line ng-show="{{secondRotation % 3 == 0}}"
+      <line  ng-if="secondRotation > 180"
             x1="100" y1="100" x2="100" y2="5"
             style="stroke-width: 2px; stroke: #bb0000;"
             ng-attr-transform="rotate({{secondRotation}} 100 100)" />
     </g>
   </svg>
 
+
   <svg-clock-analog/>
+
 
 
  </div>
